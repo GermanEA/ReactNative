@@ -1,8 +1,8 @@
-import React from 'react'
-import { View, Text, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react'
+import { Button, Text, View } from 'react-native'
+import { useNavigation } from '@react-navigation/core';
 import { styles } from '../theme/appTheme';
-import { useEffect } from 'react';
+
 
 export const Pagina2Screen = () => {
 
@@ -11,18 +11,20 @@ export const Pagina2Screen = () => {
     useEffect(() => {
         navigator.setOptions({
             title: 'Hola Mundo',
-            headerBackTitle: 'Atrás'
+            headerBackTitle: ''
         })
     }, [])
 
+
     return (
         <View style={ styles.globalMargin }>
-            <Text style={ styles.title }>Pagina2Screen</Text> 
+            <Text style={styles.title }> Pagina2Screen </Text>
 
             <Button 
-                title="Ir a página 3"
-                onPress={ () => navigator.navigate('Pagina3Screen') }
-            />            
+                title="Ir página 3"
+                onPress={ () => navigator.navigate('Pagina3Screen')  }
+            />
+
         </View>
     )
 }

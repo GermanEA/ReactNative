@@ -1,42 +1,57 @@
-import React from 'react'
-import { View, Text, Button, TouchableOpacity, NavigatorIOS } from 'react-native';
-import { useEffect } from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
+import React, { useEffect } from 'react'
+import { Button, Text, View, TouchableOpacity } from 'react-native'
+// import { StackScreenProps } from '@react-navigation/stack'
 import { DrawerScreenProps } from '@react-navigation/drawer';
-import { styles } from '../theme/appTheme';
+import { styles, colores } from '../theme/appTheme';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 // interface Props extends StackScreenProps<any, any>{};
 interface Props extends DrawerScreenProps<any, any>{};
 
-export const Pagina1Screen = ( { navigation }: Props ) => {
+export const Pagina1Screen = ({ navigation }: Props ) => {
 
     useEffect(() => {
+        
         navigation.setOptions({
             headerLeft: () => (
-                <Button
-                    title="Menú"
-                    onPress={ () => navigation.toggleDrawer() } 
-                />
+                <TouchableOpacity
+                    style={{
+                        marginLeft: 10
+                    }}
+                    onPress={ () => navigation.toggleDrawer()  }
+                >
+                    <Icon 
+                        name="menu-outline"
+                        color={ colores.primary }
+                        size={ 35 }
+                    />
+                </TouchableOpacity>
             )
         })
+
+
     }, [])
+
+
 
     return (
         <View style={ styles.globalMargin }>
-            <Text style={ styles.title }>Pagina1Screen</Text>
+            <Text style={styles.title }>Pagina1Screen </Text>
 
             <Button 
-                title="Ir a página 2"
+                title="Ir página 2"
                 onPress={ () => navigation.navigate('Pagina2Screen') }
             />
 
-            <Text style={{
+            <Text style={{ 
                 marginVertical: 20,
-                fontSize: 20
-            }}>Navegar con argumentos</Text>
+                fontSize: 20,
+             }}> Navegar con argumentos
+            </Text>
+
 
             <View style={{ flexDirection: 'row' }}>
-
                 <TouchableOpacity
                     style={{ 
                         ...styles.botonGrande,
@@ -45,11 +60,16 @@ export const Pagina1Screen = ( { navigation }: Props ) => {
                     onPress={ () => navigation.navigate('PersonaScreen', {
                         id: 1,
                         nombre: 'Pedro'
-                    })}
+                    }) }
                 >
-
+                    <Icon 
+                        name="body-outline"
+                        color="white"
+                        size={ 35 }
+                    />
                     <Text style={ styles.botonGrandeTexto }>Pedro</Text>
                 </TouchableOpacity>
+
 
                 <TouchableOpacity
                     style={{ 
@@ -58,14 +78,21 @@ export const Pagina1Screen = ( { navigation }: Props ) => {
                     }}
                     onPress={ () => navigation.navigate('PersonaScreen', {
                         id: 2,
-                        nombre: 'María'
-                    })}
+                        nombre: 'Maria'
+                    }) }
                 >
-
-                    <Text style={ styles.botonGrandeTexto }>María</Text>
+                    <Icon 
+                        name="woman-outline"
+                        color="white"
+                        size={ 35 }
+                    />
+                    <Text style={ styles.botonGrandeTexto }>Maria</Text>
                 </TouchableOpacity>
 
             </View>
+
+
+
 
         </View>
     )

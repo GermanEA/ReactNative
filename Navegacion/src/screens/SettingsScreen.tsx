@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Text, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styles } from '../theme/appTheme';
 
 export const SettingsScreen = () => {
@@ -12,7 +12,7 @@ export const SettingsScreen = () => {
             ...styles.globalMargin,
             marginTop: insets.top + 20
         }}>
-            <Text style={ styles.title }>Setting Screen</Text>
+            <Text style={ styles.title }>Settings Screen</Text>
         </View>
     )
 }
